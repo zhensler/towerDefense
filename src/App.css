@@ -1,0 +1,28 @@
+.board{
+  margin: 10% 22% 10% 22%;
+  width: 56%;
+  height: 80%;
+  display:flex;
+  align-content: center;
+}
+
+.column{
+  width: 100%;
+  height: 100%;
+}
+
+.square{
+  width: 100%;
+  height: 100%;
+  text-align: center;
+}
+
+.path{
+  color: rgb(255, 213, 97);
+  background-color: rgb(255, 213, 97);
+}
+
+.empty{
+  color: rgb(102, 250, 102);
+  background-color: rgb(102, 250, 102);
+}
