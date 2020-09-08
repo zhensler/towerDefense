@@ -1,10 +1,12 @@
 import React from 'react';
 import './App.css';
 import {layout1} from './board.js';
+import {towers} from './towers.js';
 
+// ---------- Background Functions ----------
 function Square(props){
   return(
-  <div className={'square '+props.layout}>{props.layout}</div>
+  <button className={'square '+props.layout}>{props.layout}</button>
   );
 }
 
@@ -18,8 +20,8 @@ function Column(props){
   );
 }
 
-//builds columns
 function Board(props){
+
   return(
     <div className="board">
       {props.layout.map(column => (
@@ -29,22 +31,47 @@ function Board(props){
   );
 }
 
-//representation of board
-//0 is empty placeable space
-//1 is track
-//board = [[0,0,0],[1,1,1],[2,2,2]]
-//  translates to:
-//  0 1 2
-//  0 1 2
-//  0 1 2
 
-//loads board
-function App() {
-  return (
-    <div className="App">
-      <Board layout={layout1} />
+// ---------- Store Functions ----------
+function StoreItem(props){
+  return(
+    <button className="storeItem">
+      <p><b>{props.info[1]}</b></p>
+      <p>Range: {props.info[2]}</p>
+      <p>DPS: {props.info[3]}</p>
+    </button>
+  );
+}
+
+function Store(props){
+  return(
+    <div className="store">
+      <h2>Store</h2>
+      {props.towerList.map(tower => (
+        <StoreItem info={tower} />
+      ))}
     </div>
   );
+}
+
+// ---------- Enemy Control / Generation Functions ----------
+
+
+// ---------- Main Container ----------
+class App extends React.Component {
+  // eslint-disable-next-line
+  constructor(props){
+    super(props);
+  }
+
+  render(){
+    return (
+      <div className="app">
+        <Board layout={layout1} />
+        <Store towerList={towers}/>
+      </div>
+    );
+  }
 }
 
 export default App;
